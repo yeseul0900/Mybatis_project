@@ -4,8 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id = "dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="con.example"/>
-        <property name="url" value="jdbc:mariadb://walab.handong.edu:3306/p1_22001009?useSSL=false"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://walab.handong.edu:3306/p1_22001009?useSSL=false"/>
         <property name="username" value="p1_22001009"/>
         <property name="password" value="AiCiaSh9ie"/>
     </bean>

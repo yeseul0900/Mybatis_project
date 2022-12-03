@@ -77,11 +77,11 @@ public class SuggestionVO {
         this.regdate = regdate;
     }
 
-    public String getSuggestion() {
+    public String getSuggestions() {
         return suggestions;
     }
 
-    public void setSuggestion(String suggestions) {
+    public void setSuggestions(String suggestions) {
         this.suggestions = suggestions;
     }
 

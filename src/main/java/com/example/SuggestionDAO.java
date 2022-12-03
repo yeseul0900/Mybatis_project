@@ -13,34 +13,20 @@ import java.util.List;
 public class SuggestionDAO{
     @Autowired
     JdbcTemplate jdbcTemplate;
+    private final String BOARD_INSERT = "insert into p_suggestion (name, nickname, s_number, major, department, category, suggestions) values (?,?,?,?,?,?,?)";
+    private final String BOARD_UPDATE = "update p_suggestion set name = ?, nickname = ?, s_number = ?, major = ?, department = ?, category = ?, suggestions = ? where personID = ?";
+    private final String BOARD_DELETE = "delete from p_suggestion  where personID=?";
 
     public int insertSug(SuggestionVO vo){
-        String sql = "insert into p_suggestion (name, nickname, s_number, major, department, category, suggestion) values ("
-                +"'"+"vo.getName()"+"',"
-                +"'"+"vo.getNickname()"+"',"
-                +"'"+"vo.getS_number()"+"',"
-                +"'"+"vo.getMajor()"+"',"
-                +"'"+"vo.getDepartment()"+"',"
-                +"'"+"vo.getCategory()"+"',"
-                +"'"+"vo.getSuggestion()"+"')";
-        return jdbcTemplate.update(sql);
+        return jdbcTemplate.update(BOARD_INSERT, new Object[]{vo.getName(), vo.getNickname(),vo.getS_number(),vo.getMajor(),vo.getDepartment(),vo.getCategory(),vo.getSuggestions()});
     }
 
     public int updateSug(SuggestionVO vo){
-        String sql = "update p_suggestion set name = '"+vo.getName()+"'," +
-                "nickname ='" +vo.getNickname()+"'," +
-                "s_number ='" +vo.getS_number()+"'," +
-                "major ='" +vo.getMajor()+"'," +
-                "department ='" +vo.getDepartment()+"'," +
-                "category ='" +vo.getCategory()+"'," +
-                "suggestions ='" +vo.getSuggestion()+"'," +
-                "where personID =" +vo.getPersonID();
-        return jdbcTemplate.update(sql);
+        return jdbcTemplate.update(BOARD_UPDATE, new Object[]{vo.getName(), vo.getNickname(),vo.getS_number(),vo.getMajor(),vo.getDepartment(),vo.getCategory(),vo.getSuggestions(),vo.getPersonID()});
     }
 
     public int deleteSug(int personID){
-        String sql = "delete from p_suggestion  where personID=?";
-        return jdbcTemplate.update(sql);
+        return jdbcTemplate.update(BOARD_DELETE,new Object[]{personID});
     }
 
     class SugRowMapper implements RowMapper<SuggestionVO>{
@@ -53,7 +39,7 @@ public class SuggestionDAO{
             vo.setMajor(rs.getString("major"));
             vo.setDepartment(rs.getString("department"));
             vo.setCategory(rs.getString("category"));
-            vo.setSuggestion(rs.getString("suggestions"));
+            vo.setSuggestions(rs.getString("suggestions"));
             vo.setRegdate(rs.getDate("regdate"));
             return vo;
         }

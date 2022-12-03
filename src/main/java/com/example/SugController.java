@@ -18,11 +18,11 @@ public class SugController {
     @RequestMapping(value = "/post", method = RequestMethod.GET)
     public String suglist(Model model){
         model.addAttribute("list",sugService.getSugList());
-        return "post";
+        return "board/post";
     }
     @RequestMapping(value = "/add", method= RequestMethod.GET)
     public String addPost(){
-        return "addform";
+        return "board/addform";
     }
     @RequestMapping(value = "/addok", method = RequestMethod.GET)
     public String addPostOK(SuggestionVO vo){
@@ -36,7 +36,7 @@ public class SugController {
     public String editPost(@PathVariable("id") int id, Model model){
         SuggestionVO suggestionVO = sugService.getSug(id);
         model.addAttribute("u",suggestionVO);
-        return "editform";
+        return "board/editform";
     }
     @RequestMapping(value = "/editok", method = RequestMethod.POST)
     public String editPostOK(SuggestionVO vo){
