@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="suggestion">
+<mapper namespace="Suggestion">
     <insert id="insertSug">
         insert into p_suggestion (name, nickname, s_number, major, department, category, suggestions) values (#{name}, #{nickname},#{s_number},#{major},#{department},#{category},#{suggestions})
     </insert>
