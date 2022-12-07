@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="suggestion">
+    <insert id="insertSug">
+        insert into p_suggestion (name, nickname, s_number, major, department, category, suggestions) values (#{name}, #{nickname},#{s_number},#{major},#{department},#{category},#{suggestions})
+    </insert>
+    <update id="updateSug">
+        update p_suggestion set name = #{name}, nickname = #{nickname}, s_number = #{s_number}, major = #{major}, department = #{department}, category = #{category}, suggestions = #{suggestions} where personID = #{personID}"
+    </update>
+    <delete id="deleteSug">
+        delete from p_suggestion where personID = #{personID}
+    </delete>
+    <select id="getSug">
+        select * from p_suggestion where personID= #{personID}
+    </select>
+    <select id="getSugList">
+        select * from p_ssugestion order by personID desc
+    </select>
+</mapper>
