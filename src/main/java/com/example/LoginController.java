@@ -15,9 +15,10 @@ public class LoginController {
     UserDAO.UserServiceImpl service;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(String t, Model model){
-        return "login";
+    public String login(Model model){
+        return "board/login";
     }
+
     @RequestMapping(value = "/loginOK", method = RequestMethod.POST)
     public String loginCheck(HttpSession session, UserVO vo){
         String returnURL= "";
@@ -29,7 +30,7 @@ public class LoginController {
         if(loginvo != null){
             System.out.println("로그인 성공");
             session.setAttribute("login", loginvo);
-            returnURL = "redirect:/board/list";
+            returnURL = "redirect:/board/post";
         }else{
             System.out.println("로그인 실패");
             returnURL = "redirect:/login/login";
@@ -39,6 +40,6 @@ public class LoginController {
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "redirect/login/login";
+        return "redirect:/login/login";
     }
 }

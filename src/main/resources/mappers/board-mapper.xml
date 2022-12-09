@@ -12,10 +12,10 @@
     <delete id="deleteSug">
         delete from p_suggestion where personID = #{personID}
     </delete>
-    <select id="getSug">
+    <select id="getSug" resultType="com.example.SuggestionVO">
         select * from p_suggestion where personID= #{personID}
     </select>
-    <select id="getSugList">
-        select * from p_ssugestion order by personID desc
+    <select id="getSugList" resultType="com.example.SuggestionVO">
+        select * from p_suggestion order by personID desc
     </select>
 </mapper>
