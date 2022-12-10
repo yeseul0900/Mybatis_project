@@ -112,6 +112,9 @@
                 <button type="button" onclick="location.href = 'https://hisnet.handong.edu/' " class="btn btn-warning">
                     Hisnet
                 </button>
+                <button type="button" onclick="location.href = '../login/logout' " class="btn btn-warning">
+                    Logout
+                </button>
             </div>
         </div>
     </div>
